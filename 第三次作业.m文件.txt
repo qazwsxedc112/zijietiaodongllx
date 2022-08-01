@@ -1,0 +1,67 @@
+#import "Passenger.h"
+#import <Foundation/Foundation.h>
+
+@implementation Orders
+-(instancetype)initWithName:(NSString *)_Ordernumber num:(NSString *)_Carnumber Buyer:(Person *)_buyer Buytime:(NSDate *)_buytime Checktime:(NSDate *)_checktime Money:(CGFloat)_money
+{
+    if(self=[super init])
+    {
+        [self createOrderWithName:_Ordernumber num:_Carnumber Buyer:_buyer Buytime:_buytime Checktime:_checktime Money:_money]
+    }
+    return self;
+}
+-(void)createOrderWithName:(NSString *)_Ordernumber num:(NSString *)_Carnumber Buyer:(Person *)_buyer Buytime:(NSDate *)_buytime Checktime:(NSDate *)_checktime Money:(CGFloat)_money
+{
+    self._Ordernumber=_Ordernumber;
+    self._Carnumber= _Carnumber;
+    self._buyer=_buyer;
+    self._buytime=_buytime;
+    self._checktime=_checktime;
+    self._money=_money;
+
+}
+@end
+
+
+
+
+
+@implementation Passenger
+-(instancetype)initWithName:NSInteger _score age:BOOL _ageif
+{
+    if(self=[super init])
+    {
+        [self createPassengerWithName:_Sex age:_ageif]
+    }
+    return self;
+}
+-(void)createPassengerWithName:NSInteger _score age:BOOL _ageif
+{
+    self._score=_score;
+    self._ageif=_ageif;
+
+}
+-(void)order:(Order *)o1
+{
+    [_history addObject:o1];
+    [_will addObject:o1];
+
+}
+-(void)check:(Order *)o2
+{
+    int x=1;
+    for(int i=0;i<[_will count];i++)
+        {
+            if([_will objectAtIndex:i]==o2)
+            {
+                x=0;
+                [_will removeObjectAtIndex:i];
+                break;
+            }
+        }
+     if(x==1)
+     {
+      NSLog(@"查无此订单！");
+      }
+}
+@end
