@@ -1,0 +1,29 @@
+#import <Foundation/Foundation.h>
+@interface Student : NSObject
+    @public
+   @property(nonatomic, copy) NSString *_name;//名字
+   @property(nonatomic, copy) NSString *_major;//主修专业
+   @property(nonatomic, copy) NSInteger _age;//年龄
+- (void)study:(float)time;
+@end
+
+@implementation Student
+- (void)study:(float)time
+{
+    NSLog(@"学生%@学习时长：%f小时",_name,time);
+}
+@end
+
+
+int main(int argc,const char * argv[])
+{
+    @autoreleasepool
+    {
+    Student *s1=[Student new];
+    s1->_name=@"Petter";
+    s1->_major=@"Math";
+    s1->_age=18;
+    [s1 study:9.5];
+    }
+    return 0;
+}
